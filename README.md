@@ -15,3 +15,25 @@ Start all services:
 ```
 docker compose up -d
 ```
+
+## Example compose config for sites
+```
+version: '3.8'
+
+networks:
+  reverse_proxy:
+    external: true
+
+services:
+  nginx:
+    image: nginx:1.23-alpine
+    volumes:
+      - ./public_html:/usr/share/nginx/html:ro
+    expose:
+      - 80
+    environment:
+      - VIRTUAL_HOST=subdomain.domain.com
+      - LETSENCRYPT_HOST=subdomain.domain.com
+    networks:
+      - reverse_proxy
+```
