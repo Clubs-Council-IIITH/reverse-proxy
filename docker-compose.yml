@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 volumes:
   certs:
@@ -24,6 +24,7 @@ services:
       - ./nginx:/etc/nginx/conf.d
     networks:
       - reverse_proxy
+    restart: unless-stopped
 
   acme:
     image: nginxproxy/acme-companion
@@ -36,3 +37,4 @@ services:
       - ./.env
     networks:
       - reverse_proxy
+    restart: unless-stopped
