@@ -22,6 +22,7 @@ services:
       - html:/usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx:/etc/nginx/conf.d
+      - /etc/ssl:/etc/ssl:ro
     networks:
       - reverse_proxy
     restart: unless-stopped
