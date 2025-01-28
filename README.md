@@ -3,7 +3,7 @@
 ##  Setup
 Create a new external Docker network named `reverse_proxy` (if it doesn't exist):
 ```
-docker network create reverse_proxy
+docker network create reverse_proxy --subnet 172.19.0.0/16 --gateway 172.19.0.1
 ```
 
 Copy .env file and set appropriate default email ID:

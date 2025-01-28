@@ -4,7 +4,7 @@ volumes:
   certs:
   vhost:
   html:
-  acme:
+  # acme:
 
 networks:
   reverse_proxy:
@@ -27,15 +27,15 @@ services:
       - reverse_proxy
     restart: unless-stopped
 
-  acme:
-    image: nginxproxy/acme-companion
-    volumes_from:
-      - nginx
-    volumes:
-      - acme:/etc/acme.sh
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    env_file:
-      - ./.env
-    networks:
-      - reverse_proxy
-    restart: unless-stopped
+  # acme:
+  #   image: nginxproxy/acme-companion
+  #   volumes_from:
+  #     - nginx
+  #   volumes:
+  #     - acme:/etc/acme.sh
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #   env_file:
+  #     - ./.env
+  #   networks:
+  #     - reverse_proxy
+  #   restart: unless-stopped
